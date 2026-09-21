@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Information | VisitorPro</title>
+
+    <!-- Main CSS -->
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+            Visitor<span>Pro</span>
+        </div>
+
+        <div class="nav-links">
+
+            <a href="/">
+                Home
+            </a>
+
+            <a href="/visitor/register">
+                Register
+            </a>
+
+            <a href="/visitor/logout" class="admin-btn">
+                Logout
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- VISITOR INFORMATION -->
+
+    <div class="visitor-info-container">
+
+        <div class="visitor-info-card">
+
+            <h1 class="visitor-info-title">
+                👤 My Information
+            </h1>
+
+
+            <!-- PHOTO -->
+
+            <div class="visitor-photo-box">
+
+                {% if visitor.photo %}
+
+                    <img
+                        src="{{ url_for('static', filename='uploads/' + visitor.photo) }}"
+                        alt="Visitor Photo"
+                        class="visitor-photo"
+                    >
+
+                {% else %}
+
+                    <div class="visitor-no-photo">
+                        👤
+                    </div>
+
+                {% endif %}
+
+            </div>
+
+
+            <!-- VISITOR ID -->
+
+            <div class="visitor-detail">
+
+                <div class="visitor-detail-label">
+                    VISITOR ID
+                </div>
+
+                <div class="visitor-detail-value">
+                    {{ visitor.visitor_id }}
+                </div>
+
+            </div>
+
+
+            <!-- NAME -->
+
+            <div class="visitor-detail">
+
+                <div class="visitor-detail-label">
+                    FULL NAME
+                </div>
+
+                <div class="visitor-detail-value">
+                    {{ visitor.name }}
+                </div>
+
+            </div>
+
+
+            <!-- MOBILE -->
+
+            <div class="visitor-detail">
+
+                <div class="visitor-detail-label">
+                    MOBILE NUMBER
+                </div>
+
+                <div class="visitor-detail-value">
+                    {{ visitor.mobile }}
+                </div>
+
+            </div>
+
+
+            <!-- EMAIL -->
+
+            <div class="visitor-detail">
+
+                <div class="visitor-detail-label">
+                    EMAIL
+                </div>
+
+                <div class="visitor-detail-value">
+                    {{ visitor.email or '-' }}
+                </div>
+
+            </div>
+
+
+            <!-- ADDRESS -->
+
+            <div class="visitor-detail">
+
+                <div class="visitor-detail-label">
+                    ADDRESS
+                </div>
+
+                <div class="visitor-detail-value">
+                    {{ visitor.address or '-' }}
+                </div>
+
+            </div>
+
+
+            <!-- ID PROOF -->
+
+            <div class="visitor-detail">
+
+                <div class="visitor-detail-label">
+                    ID PROOF
+                </div>
+
+                <div class="visitor-detail-value">
+                    {{ visitor.id_proof or '-' }}
+                </div>
+
+            </div>
+
+
+            <!-- LOGOUT -->
+
+            <a href="/visitor/logout"
+               class="visitor-logout-btn">
+
+                Logout
+
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <div class="footer-logo">
+            Visitor<span>Pro</span>
+        </div>
+
+        <p>
+            Secure & Smart Visitor Management System
+        </p>
+
+        <div class="copyright">
+            © 2026 VisitorPro. All Rights Reserved.
+        </div>
+
+    </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Visitor Records | VisitorPro</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #0f172a;
+            color: white;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: auto;
+            padding: 35px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 32px;
+        }
+
+        .back-btn {
+            text-decoration: none;
+            background: #6366f1;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 10px;
+            font-weight: bold;
+        }
+
+        .back-btn:hover {
+            background: #4f46e5;
+        }
+
+        .table-box {
+            background: #1e293b;
+            border-radius: 18px;
+            padding: 20px;
+            overflow-x: auto;
+            border: 1px solid #334155;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 1000px;
+        }
+
+        th {
+            background: #334155;
+            padding: 15px;
+            text-align: left;
+            color: #e2e8f0;
+        }
+
+        td {
+            padding: 15px;
+            border-bottom: 1px solid #334155;
+            color: #f8fafc;
+        }
+
+        tr:hover {
+            background: #24324a;
+        }
+
+        .inside {
+            display: inline-block;
+            background: #16a34a;
+            color: white;
+            padding: 7px 14px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 13px;
+        }
+
+        .checked-out {
+            display: inline-block;
+            background: #64748b;
+            color: white;
+            padding: 7px 14px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 13px;
+        }
+
+        .checkout-btn {
+            background: #ef4444;
+            color: white;
+            border: none;
+            padding: 9px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .checkout-btn:hover {
+            background: #dc2626;
+        }
+
+        .empty {
+            text-align: center;
+            padding: 40px;
+            color: #94a3b8;
+        }
+
+        @media (max-width: 700px) {
+            .container {
+                padding: 15px;
+            }
+
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- HEADER -->
+
+    <div class="header">
+
+        <div>
+            <h1>📋 Visitor Records</h1>
+
+            <p>
+                View and manage all visitor check-ins and check-outs.
+            </p>
+        </div>
+
+        <a href="/admin/dashboard"
+           class="back-btn">
+            ← Dashboard
+        </a>
+
+    </div>
+
+
+    <!-- TABLE -->
+
+    <div class="table-box">
+
+        {% if visitors %}
+
+        <table>
+
+            <thead>
+                <tr>
+                    <th>Visitor ID</th>
+                    <th>Name</th>
+                    <th>Mobile</th>
+                    <th>Employee</th>
+                    <th>Purpose</th>
+                    <th>Check In</th>
+                    <th>Check Out</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+            {% for visitor in visitors %}
+
+                <tr>
+
+                    <!-- Visitor ID -->
+                    <td>
+                        {{ visitor.visitor_id }}
+                    </td>
+
+
+                    <!-- Name -->
+                    <td>
+                        {{ visitor.name }}
+                    </td>
+
+
+                    <!-- Mobile -->
+                    <td>
+                        {{ visitor.mobile }}
+                    </td>
+
+
+                    <!-- Employee -->
+                    <td>
+                        {{ visitor.employee_name or 'Not Assigned' }}
+                    </td>
+
+
+                    <!-- Purpose -->
+                    <td>
+                        {{ visitor.purpose or '-' }}
+                    </td>
+
+
+                    <!-- Check In -->
+                    <td>
+                        {{ visitor.check_in or '-' }}
+                    </td>
+
+
+                    <!-- Check Out -->
+                    <td>
+                        {{ visitor.check_out or '-' }}
+                    </td>
+
+
+                    <!-- STATUS -->
+
+                    <td>
+
+                        {% if visitor.status == 'Inside' %}
+
+                            <span class="inside">
+                                🟢 Inside
+                            </span>
+
+                        {% else %}
+
+                            <span class="checked-out">
+                                ✓ Checked Out
+                            </span>
+
+                        {% endif %}
+
+                    </td>
+
+
+                    <!-- ACTION -->
+
+                    <td>
+
+                        {% if visitor.status == 'Inside' %}
+
+                            <form method="POST"
+                                  action="/admin/checkout/{{ visitor.visit_id }}">
+
+                                <button type="submit"
+                                        class="checkout-btn">
+
+                                    Check Out
+
+                                </button>
+
+                            </form>
+
+                        {% else %}
+
+                            <span>—</span>
+
+                        {% endif %}
+
+                    </td>
+
+                </tr>
+
+            {% endfor %}
+
+            </tbody>
+
+        </table>
+
+        {% else %}
+
+            <div class="empty">
+
+                <h2>📭 No Visitor Records</h2>
+
+                <p>
+                    No visitor records are available.
+                </p>
+
+            </div>
+
+        {% endif %}
+
+    </div>
+
+</div>
+
+</body>
+</html>

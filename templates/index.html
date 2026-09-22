@@ -1,1 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <title>Visitor Management System</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+<nav class="navbar">
+    <div class="logo">
+        🏢 Visitor<span>Pro</span>
+    </div>
+
+    <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="#about">About</a>
+        <a href="#features">Features</a>
+        <a href="#contact">Contact</a>
+        <a href="/admin/login" class="admin-btn">Admin Login</a>
+    </div>
+</nav>
+
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <p class="tag">SMART VISITOR MANAGEMENT</p>
+
+        <h1>
+            Manage Your Visitors
+            <span>Smartly & Securely</span>
+        </h1>
+
+        <p class="description">
+            A modern visitor management system designed to make
+            visitor registration, check-in, check-out and tracking
+            simple, fast and secure.
+        </p>
+
+        <div class="hero-buttons">
+            <a href="/visitor/register" class="primary-btn">
+                Register as Visitor
+            </a>
+
+            <a href="/visitor/login" class="secondary-btn">
+                Visitor Login
+            </a>
+        </div>
+
+    </div>
+
+
+    <div class="hero-card">
+
+        <div class="card-icon">👤</div>
+
+        <h2>Visitor Check-In</h2>
+
+        <p>
+            Quick and secure visitor registration
+            with digital records.
+        </p>
+
+        <div class="status">
+            <span></span> System Online
+        </div>
+
+    </div>
+
+</section>
+
+
+<section id="features" class="features">
+
+    <div class="section-title">
+        <p>WHY USE OUR SYSTEM?</p>
+        <h2>Everything You Need</h2>
+    </div>
+
+    <div class="feature-container">
+
+        <div class="feature-card">
+            <div class="feature-icon">📝</div>
+            <h3>Easy Registration</h3>
+            <p>
+                Register visitors quickly with
+                simple digital forms.
+            </p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">🔐</div>
+            <h3>Secure Records</h3>
+            <p>
+                Keep visitor information safely
+                stored in the database.
+            </p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">⏱️</div>
+            <h3>Check-In / Check-Out</h3>
+            <p>
+                Track visitor entry and exit
+                times accurately.
+            </p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">📊</div>
+            <h3>Reports</h3>
+            <p>
+                View visitor history and
+                generate useful reports.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<section id="about" class="about">
+
+    <div>
+        <p class="small-title">ABOUT THE SYSTEM</p>
+
+        <h2>
+            Modern Visitor Management
+            For Your Organization
+        </h2>
+    </div>
+
+    <p>
+        VisitorPro helps organizations manage visitors digitally.
+        It reduces paperwork, improves security and provides
+        administrators with complete visitor records.
+    </p>
+
+</section>
+
+
+<footer id="contact">
+
+    <div class="footer-logo">
+        🏢 Visitor<span>Pro</span>
+    </div>
+
+    <p>
+        Visitor Management System
+    </p>
+
+    <p class="copyright">
+        © 2026 VisitorPro. All Rights Reserved.
+    </p>
+
+</footer>
+
+</body>
+</html>
